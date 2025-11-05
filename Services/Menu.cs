@@ -1,4 +1,5 @@
-﻿using W9_assignment_template.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using W9_assignment_template.Data;
 
 namespace W9_assignment_template.Services;
 
