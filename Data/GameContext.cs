@@ -15,22 +15,22 @@ public class GameContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Configure TPH for Character hierarchy
-        //modelBuilder.Entity<Character>()
-        //    .HasDiscriminator<string>("Discriminator")
-        //    .HasValue<Player>("Player")
-        //    .HasValue<Goblin>("Goblin");
+        modelBuilder.Entity<Character>()
+            .HasDiscriminator<string>("Discriminator")
+            .HasValue<Player>("Player")
+            .HasValue<Goblin>("Goblin");
 
         // TODO Configure TPH for Ability hierarchy
-        //modelBuilder.Entity<Ability>()
-        //    .HasDiscriminator<string>("Discriminator")
-        //    .HasValue<HealAbility>("HealAbility")
-        //    .HasValue<DamageAbility>("DamageAbility");
+        modelBuilder.Entity<Ability>()
+            .HasDiscriminator<string>("Discriminator")
+            .HasValue<PlayerAbility>("HealAbility")
+            .HasValue<GoblinAbility>("DamageAbility");
 
         // Configure many-to-many relationship between Character and Ability
-        //modelBuilder.Entity<Character>()
-        //    .HasMany(c => c.Abilities)
-        //    .WithMany(a => a.Characters)
-        //    .UsingEntity(j => j.ToTable("CharacterAbilities"));
+        modelBuilder.Entity<Character>()
+            .HasMany(c => c.Abilities)
+            .WithMany(a => a.Characters)
+            .UsingEntity(j => j.ToTable("CharacterAbilities"));
 
         base.OnModelCreating(modelBuilder);
     }

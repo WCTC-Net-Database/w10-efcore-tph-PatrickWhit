@@ -6,9 +6,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
 
-        // foreign keys
-        public int CharacterID { get; set; }
-
         // Navigation property to Characters
         public virtual ICollection<Character> Characters { get; set; }
     }
